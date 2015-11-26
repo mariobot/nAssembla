@@ -1,0 +1,17 @@
+﻿@model nAssembla.DTO.Authentication
+
+@{
+    ViewBag.Title = "Autenticate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Autenticate</h2>
+
+@using(Html.BeginForm("Autenticate","Account", FormMethod.Post))
+{
+    @Html.TextBoxFor(Model => Model.AccessToken)
+    <br />
+    @Html.TextBoxFor(Model => Model.RefreshToken)
+    <br />
+    <input type="submit" name="name" value="Autenticate in Assembla" />
+}

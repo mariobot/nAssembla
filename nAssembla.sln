@@ -17,6 +17,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nAssembla.Web", "nAssembla.Web\nAssembla.Web.csproj", "{2B8D63C7-1093-447A-8684-FBD577EB6B15}"
 EndProject
 Global
+	GlobalSection(CodealikeProperties) = postSolution
+		SolutionGuid = a70b4177-45c8-4685-a70a-83b19f04a8d5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
