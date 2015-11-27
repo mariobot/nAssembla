@@ -7,9 +7,9 @@ using nAssembla.DTO;
 
 namespace nAssembla.Web.Controllers
 {
-    public class AccountAssemblaController : Controller
+    public class AccountController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Autenticate()
         {
             return View();
         }
@@ -22,8 +22,9 @@ namespace nAssembla.Web.Controllers
         [HttpPost]
         public ActionResult Autenticate(Authentication _autInfo)
         {
-	  string key = _autInfo.AccessToken;
-	  string d = _autInfo.
+	  string AccessToken = _autInfo.AccessToken;
+	  string RefreshToken = _autInfo.RefreshToken;
+
 	  return View();
         }
 
