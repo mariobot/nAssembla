@@ -51,8 +51,10 @@
                     <li><a href="@Url.Action("About","Home")">About</a></li>
                     <li><a href="@Url.Action("Tutorial","Home")">Tutorial</a></li>
                     <li><a href="@Url.Action("Configuration","Home")">Configuration</a></li>
-                    <li>@Html.ActionLink("Assembla Account", "AssemblaAccount", "Account")</li>
-                    <li>@Html.ActionLink("Assembla", "Autenticate", "Account")</li>
+                    <li><a href="@Url.Action("Index","Milestones")">Milestones</a></li>
+                    <li><a href="@Url.Action("Spaces","Spaces")">Spaces</a></li>
+                    <li>@Html.ActionLink("Account", "Account", "Account")</li>
+                    <li>@Html.ActionLink("Autenticate", "Autenticate", "Account")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
@@ -72,22 +74,39 @@
         </div>
 
         <hr>
-
         <div class="row">
             <div class="col-xs-6 col-md-4">
-                <h3>Configuration Assembla</h3>
-                <p>In this secction you can configurate the credentials of the project.</p>
-                <a></a>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3>Configuration Assembla</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>In this secction you can configurate the credentials of the project.</p>
+                        <a></a>
+                    </div>
+                </div>
             </div>
             <div class="col-xs-6 col-md-4">
-                <h3>Autentication Project</h3>
-                <p>In this secction you can autenticate with the information process</p>
-                <a></a>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3>Autentication Project</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>In this secction you can autenticate with the information process</p>
+                        <a></a>
+                    </div>
+                </div>
             </div>
             <div class="col-xs-6 col-md-4">
-                <h3>Autentication Project</h3>
-                <p>In this secction you can autenticate with the information process</p>
-                <a></a>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3>Autentication Project</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>In this secction you can autenticate with the information process</p>
+
+                    </div>
+                </div>
             </div>
         </div>
         <hr>
@@ -104,8 +123,10 @@
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <p>We need your colaboration</p>
                 <a href="https://github.com/mariobot/nAssembla" target="_blank">github.com/mariobot/nAssembla</a>
-                <p>In this repository we develop the web implementation for the api
-                Original git by <a href="https://github.com/GrantDG/nAssembla" target="_blank">GrantDG</a></p>
+                <p>
+                    In this repository we develop the web implementation for the api
+                    Original git by <a href="https://github.com/GrantDG/nAssembla" target="_blank">GrantDG</a>
+                </p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <p>Official documentation</p>

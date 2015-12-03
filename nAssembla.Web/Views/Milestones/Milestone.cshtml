@@ -1,0 +1,13 @@
+﻿@model nAssembla.DTO.Milestone
+
+@{
+    ViewBag.Title = "Milestone";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Milestone</h2>
+@if (Model != null)
+{
+    <h3>@Model.Title</h3>
+    //Html.RenderPartial("_MilestoneInfo", Model); 
+}

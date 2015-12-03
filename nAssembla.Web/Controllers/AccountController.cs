@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using nAssembla.DTO;
+using nAssembla.Web.Properties;
+using System.Threading.Tasks;
 
 namespace nAssembla.Web.Controllers
 {
@@ -12,25 +14,36 @@ namespace nAssembla.Web.Controllers
         public ActionResult Autenticate()
         {
             return View();
-        }
-
-        public ActionResult AssemblaAccount()
-        {
-	  return View();
-        }
+        }        
 
         [HttpPost]
-        public ActionResult Autenticate(Authentication _autInfo)
+        public async Task<ActionResult> Autenticate(Authentication _autInfo)
         {
-	  string AccessToken = _autInfo.AccessToken;
-	  string RefreshToken = _autInfo.RefreshToken;
+	  try
+	  {
+	      nAssembla.Configuration.ApiKey = _autInfo.AccessToken;
+	      nAssembla.Configuration.ApiSecret = _autInfo.RefreshToken;
 
-	  return View();
+	      var currentUser = await NAssembla.UserProxy.GetCurrentUserAsync(true);
+	      var spaces = await NAssembla.SpaceProxy.GetListAsync();
+
+	      if (spaces != null)
+		return View("Account",currentUser);
+	      else return View();
+	  }
+	  catch (Exception ex){
+	      return View("Error");
+	  }
         }
 
-        public ActionResult AccountConfiguration()
+        public async Task<ActionResult> Account(User _user)
         {
-	  return View();
+	  if (_user.Email == null)	  
+	      _user = await NAssembla.UserProxy.GetCurrentUserAsync(true);	  
+
+	  return View(_user);
         }
+        
+
     }
 }

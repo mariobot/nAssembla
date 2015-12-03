@@ -1,0 +1,20 @@
+﻿@model nAssembla.DTO.User
+
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Account</h2>
+<div class="row">
+    <div class="col-lg-2 col-lg-offset-2">
+        @if (Model != null)
+        {
+	  <label>@Model.Email</label>
+            <label>@Model.Id</label>
+            <label>@Model.LoginName</label>
+            <label>@Model.Name</label>
+            <label>@Model.Organization</label>
+        }
+    </div>
+</div>
