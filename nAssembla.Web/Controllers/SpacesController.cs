@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace nAssembla.Web.Controllers
 {
+    /// <summary>
+    /// Controller for use the Spaces
+    /// </summary>
     public class SpacesController : Controller
     {
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
@@ -28,17 +35,26 @@ namespace nAssembla.Web.Controllers
 	  return View(_spaces);
         }
 
+        /// <summary>
+        /// Shows the specified _space.
+        /// </summary>
+        /// <param name="_space">The _space.</param>
+        /// <returns></returns>
         public async Task<ActionResult> Show(Space _space)
         {  
 	  return View();
         }
 
+        /// <summary>
+        /// Spaces the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
         public async Task<ActionResult> Space(string key)
         {
 	  var space = await NAssembla.SpaceProxy.GetAsync(key);
 
 	  return View(space);
         }
-
     }
 }
