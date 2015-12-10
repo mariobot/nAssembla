@@ -7,12 +7,11 @@
 
 <h2>Milestones</h2>
 <div class="row">
-    <div class="col-lg-12">
-        @if (Model != null)
+    @if (Model != null)
+    {
+        foreach (var milestone in Model)
         {
-            foreach (var milestone in Model)
-            {
-                //Html.RenderPartial("_MilestoneInfo", milestone);
+            <div class="col-lg-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         @milestone.Title
@@ -20,15 +19,16 @@
                     <div class="panel-body">
                         <p>Description: @milestone.Description</p>
                         <p>Responsible: @milestone.ResponsibleUser</p>
-                        <p>Created On : @milestone.CreatedOn</p>
-                        <p>Due Date   : @milestone.DueDate</p>
+                        <p>Created On : @String.Format("{0:dd/MM/yyyy}", milestone.CreatedOn)</p>
+                        <p>Due Date   : @String.Format("{0:dd/MM/yyyy}",milestone.DueDate)</p>
+                        <p>Updated At : @String.Format("{0:dd/MM/yyyy}", milestone.UpdatedAt)</p>
                         <p>IsCompleted: @milestone.IsCompleted</p>
                     </div>
                     <div class="panel-footer">
-
+                        <a href="#" class="btn btn-default">More Info</a>
                     </div>
                 </div>
-            }
+            </div>
         }
-    </div>
+    }
 </div>

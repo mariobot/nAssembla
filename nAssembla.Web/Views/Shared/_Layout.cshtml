@@ -34,7 +34,21 @@
 <body>
     <div class="container">
         <div class="page-header">
-            <p class="lead"><h1>Assembla (Integration)</h1>WEB Version of the implementation of assembla integration</p>
+            <div class="row">
+                <div class="col-lg-4">
+                    <a href="@Url.Action("Index","Home")"><img src="../Content/Images/BlueLogoAssembla.png" class="img-responsive" /></a>
+                    
+                </div>
+	      <div class="col-lg-5">
+              <p class="lead"><h1>Assembla (Integration)</h1>WEB Version of the implementation of assembla integration</p>
+	</div>
+                <div class="col-lg-3">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Account", "Account", "Account", null, new { @class = "btn btn-default" })</li>
+                        <li>@Html.ActionLink("Autenticate", "Autenticate", "Account", null, new { @class = "btn btn-default" })</li>
+                    </ul>
+	      </div>
+            </div>
         </div>
         <div class="container-fluid">
             <div class="navbar-header">
@@ -52,15 +66,13 @@
                     <li><a href="@Url.Action("Tutorial","Home")">Tutorial</a></li>
                     <li><a href="@Url.Action("Configuration","Home")">Configuration</a></li>
                     <li><a href="@Url.Action("Index","Milestones")">Milestones</a></li>
-                    <li><a href="@Url.Action("Spaces","Spaces")">Spaces</a></li>
-                    <li>@Html.ActionLink("Account", "Account", "Account")</li>
-                    <li>@Html.ActionLink("Autenticate", "Autenticate", "Account")</li>
+                    <li><a href="@Url.Action("Index","Spaces")">Spaces</a></li>
+
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-                    <li><a href="../navbar-static-top/">Static top</a></li>
-                    <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-                </ul>
+                @*<ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Account", "Account", "Account", null ,new {@class="btn btn-default" })</li>
+                        <li>@Html.ActionLink("Autenticate", "Autenticate", "Account",null, new {@class="btn btn-default" })</li>
+                    </ul>*@
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
 
@@ -137,9 +149,6 @@
                 </ul>
             </div>
         </div>
-
-
-
     </div> <!-- /container -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     @Scripts.Render("~/bundles/jquery")

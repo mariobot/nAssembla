@@ -1,0 +1,55 @@
+﻿@model nAssembla.Cache.SpaceDataCache
+
+@{
+    ViewBag.Title = "Information about Space" ;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Space: @Model.Space.Name</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <h4>Milestones</h4>
+                @foreach (var milestone in Model.Milestones)
+                {
+                    <span>@milestone.Title</span>
+                }
+                <hr />
+                <h4>Users</h4>
+                @foreach (var user in Model.Users)
+                {
+                    <span>@user.Name</span>
+                }
+                <hr />
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-4">First Column</div>
+                    <div class="col-lg-4">Second Column</div>
+                    <div class="col-lg-4">Third Column</div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table>
+                            @foreach (var component in Model.Components)
+                            {
+                                <tr>
+                                    <td>@component.Id</td>
+                                    <td>@component.Name</td>
+                                    <td>@component.CreatedOn</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

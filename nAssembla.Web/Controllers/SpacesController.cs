@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using nAssembla.DTO;
 using System.Threading.Tasks;
+using nAssembla.Web.Properties;
 
 namespace nAssembla.Web.Controllers
 {
@@ -17,9 +18,89 @@ namespace nAssembla.Web.Controllers
         /// Indexes this instance.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+	  try
+	  {   
+	      var spaces = await NAssembla.SpaceProxy.GetListAsync();
+	      return View(spaces);
+	  }
+	  catch (Exception ex)
+	  {   
+	      throw;
+	  }
+        }
+
+        /// <summary>
+        /// Selecteds the space.
+        /// </summary>
+        /// <param name="_space">The _space.</param>
+        /// <returns></returns>
+        public async Task<ActionResult> SelectedSpace(DTO.Space _space)
+        {
+	  try
+	  {
+	      nAssembla.Configuration.SpaceName = _space.Name;
+
+	      var serialized = Settings.Default.SerializedCache;
+	      var dataCache = new nAssembla.Cache.DataCache();
+
+	      if (!string.IsNullOrEmpty(serialized))
+		dataCache = Newtonsoft.Json.JsonConvert.DeserializeObject<nAssembla.Cache.DataCache>(serialized);
+
+	      var spacecache = default(nAssembla.Cache.SpaceDataCache);
+
+	      if (!dataCache.Spaces.TryGetValue(_space.Id, out spacecache))
+	      {
+		spacecache = await NAssembla.GetSpaceDataCache(_space.Id);
+		dataCache.Spaces.Add(_space.Id, spacecache);
+		serialized = await Newtonsoft.Json.JsonConvert.SerializeObjectAsync(dataCache);
+		TempData["spacecache"] = spacecache;
+		TempData["dataCache"] = dataCache;
+		TempData["serialized"] = serialized;		
+
+		//Settings.Default.SerializedCache = serialized;
+		//Settings.Default.Save();
+	      }
+	      else { NAssembla.SetSpaceDataCache(spacecache); }
+
+	      return View("SpaceInfo");
+
+	      //var stream = await NAssembla.ActivityProxy.Space(_space.Id).DateFrom(DateTime.Today.AddDays(-7)).GetListAsync();
+	      //stream.ToList().ForEach(s =>
+	      //{
+	      //    var ctl = new TestHarness.Controls.StreamEvent();
+	      //    ctl.DataSource = s.;
+	      //    streamPanel.Controls.Add(ctl);
+	      //});
+
+	      ////reportsCombo.SelectedItem = null;
+	      ////reportsCombo.Items.Clear();
+	      ////reportsCombo.Enabled = false;
+
+	      //var customReports = await NAssembla.CustomReportProxy.GetListAsync();
+
+	      //reportsCombo.Items.AddRange(nAssembla.DTO.StandardReports.AllStandardReports.ToArray());
+	      //if (customReports != null)
+	      //    reportsCombo.Items.AddRange(customReports.ToArray());
+
+	      //reportsCombo.Enabled = true;
+	      //statusLabel.Text = "Ready";
+	  }
+	  catch (Exception ex)
+	  {
+	      throw;
+	  }
+        }
+
+
+        public ActionResult SpaceInfo()
+        {
+	  if (TempData["spacecache"] != null){  
+ 	      nAssembla.Cache.SpaceDataCache _spaceDataCache = (nAssembla.Cache.SpaceDataCache)(TempData["spacecache"]);
+	      return View(_spaceDataCache);
+	  }
+	  else { return RedirectToAction("Index", "Spaces"); }
         }
 
         /// <summary>
@@ -29,10 +110,17 @@ namespace nAssembla.Web.Controllers
         /// <returns></returns>
         public async Task<ActionResult> Spaces(IEnumerable<Space> _spaces)
         {
-	  if (_spaces == null)	  
-	      _spaces = await NAssembla.SpaceProxy.GetListAsync();	          	  
+	  try
+	  {
+	      if (_spaces == null)
+		_spaces = await NAssembla.SpaceProxy.GetListAsync();
 
-	  return View(_spaces);
+	      return View(_spaces);
+	  }
+	  catch (Exception ex)
+	  {   
+	      throw;
+	  }
         }
 
         /// <summary>

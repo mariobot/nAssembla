@@ -15,8 +15,16 @@ namespace nAssembla.Web.Controllers
         /// <returns></returns>
         public async Task<ActionResult> Index()
         {
-	  var milestones = await NAssembla.MilestoneProxy.GetListAsync();
-            return View(milestones);
+	  try
+	  {
+	      var milestones = await NAssembla.MilestoneProxy.GetListAsync();
+	      return View(milestones);
+	  }
+	  catch (Exception ex)
+	  {   
+	      throw;
+	  }
+	  
         }
 
         /// <summary>
@@ -26,8 +34,15 @@ namespace nAssembla.Web.Controllers
         /// <returns></returns>
         public async Task<ActionResult> Milestone(int _key)
         {
-	  var milestones = await NAssembla.MilestoneProxy.GetAsync(_key);
-	  return View();
+	  try
+	  {
+	      var milestones = await NAssembla.MilestoneProxy.GetAsync(_key);
+	      return View();
+	  }
+	  catch (Exception ex)
+	  {   
+	      throw;
+	  }
         }
 
     }
