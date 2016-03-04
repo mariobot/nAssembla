@@ -23,8 +23,7 @@ namespace nAssembla.Web.Controllers
 	  catch (Exception ex)
 	  {   
 	      throw;
-	  }
-	  
+	  }	  
         }
 
         /// <summary>
@@ -44,6 +43,5 @@ namespace nAssembla.Web.Controllers
 	      throw;
 	  }
         }
-
     }
 }

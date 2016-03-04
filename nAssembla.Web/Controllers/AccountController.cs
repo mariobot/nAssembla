@@ -11,10 +11,11 @@ namespace nAssembla.Web.Controllers
 {
     public class AccountController : Controller
     {
-        public ActionResult Autenticate()
-        {
-            return View();
-        }        
+        /// <summary>
+        /// Autenticates this instance.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Autenticate(){ return View(); }        
 
         [HttpPost]
         public async Task<ActionResult> Autenticate(Authentication _autInfo)
@@ -36,14 +37,27 @@ namespace nAssembla.Web.Controllers
 	  }
         }
 
+        /// <summary>
+        /// Accounts the specified _user.
+        /// </summary>
+        /// <param name="_user">The _user.</param>
+        /// <returns></returns>
         public async Task<ActionResult> Account(User _user)
         {
 	  if (_user.Email == null)	  
 	      _user = await NAssembla.UserProxy.GetCurrentUserAsync(true);	  
 
-	  return View(_user);
+	  return View(_user);        
         }
-        
 
+        /// <summary>
+        /// Logs the out.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ActionResult> LogOut()
+        { 
+	  //var log = await NAssembla.UserProxy.GetCurrentUserAsync().
+	  return View();
+        }
     }
 }

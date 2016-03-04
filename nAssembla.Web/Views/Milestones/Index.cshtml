@@ -11,18 +11,33 @@
     {
         foreach (var milestone in Model)
         {
-            <div class="col-lg-4">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         @milestone.Title
                     </div>
                     <div class="panel-body">
                         <p>Description: @milestone.Description</p>
-                        <p>Responsible: @milestone.ResponsibleUser</p>
-                        <p>Created On : @String.Format("{0:dd/MM/yyyy}", milestone.CreatedOn)</p>
-                        <p>Due Date   : @String.Format("{0:dd/MM/yyyy}",milestone.DueDate)</p>
-                        <p>Updated At : @String.Format("{0:dd/MM/yyyy}", milestone.UpdatedAt)</p>
-                        <p>IsCompleted: @milestone.IsCompleted</p>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p class="text-info">
+                                    Responsible: @milestone.ResponsibleUser. ResponsibleUser
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                Created On : @String.Format("{0:dd/MM/yyyy}", milestone.CreatedOn)
+                            </div>
+                            <div class="col-md-3">
+                                Due Date   : @String.Format("{0:dd/MM/yyyy}", milestone.DueDate)
+                            </div>
+                            <div class="col-md-3">
+                                Updated At : @String.Format("{0:dd/MM/yyyy}", milestone.UpdatedAt)
+                            </div>
+                            <div class="col-md-3">
+                                IsCompleted: @milestone.IsCompleted
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-footer">
                         <a href="#" class="btn btn-default">More Info</a>

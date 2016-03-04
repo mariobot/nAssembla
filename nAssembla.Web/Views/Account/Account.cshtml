@@ -10,29 +10,36 @@
     <div class="col-lg-6">
         @if (Model != null)
         {
-            <form class="form">
-                <h2>Account</h2>
-                <div class="form-group">
-                    <label class="col-lg-4 control-label label-info">Email</label>
-                    <label class="col-lg-8 control-label">@Model.Email</label>
+            <div class="form panel panel-default">
+                <div class="panel-heading">
+                    <h2>Account</h2>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-4 control-label label-info">Id</label>
-                    <label class="col-lg-8 control-label">@Model.Id</label>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Email</label>
+                        <label class="col-lg-8 control-label">@Model.Email</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Id</label>
+                        <label class="col-lg-8 control-label">@Model.Id</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">LoginName</label>
+                        <label class="col-lg-8 control-label">@Model.LoginName</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Name</label>
+                        <label class="col-lg-8 control-label">@Model.Name</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Organization</label>
+                        <label class="col-lg-8 control-label">@Model.Organization</label>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-4 control-label label-info">LoginName</label>
-                    <label class="col-lg-8 control-label">@Model.LoginName</label>
+                <div class="panel-footer">
+                    <a href="@Url.Action("Index","Home")" class="btn btn-default">Home</a>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-4 control-label label-info">Name</label>
-                    <label class="col-lg-8 control-label">@Model.Name</label>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-4 control-label label-info">Organization</label>
-                    <label class="col-lg-8 control-label">@Model.Organization</label>
-                </div>                
-            </form>
+            </div>
         }
     </div>
     <div class="col-lg-3"></div>

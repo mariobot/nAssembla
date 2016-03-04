@@ -22,8 +22,16 @@ namespace nAssembla.Web.Controllers
         {
 	  try
 	  {   
-	      var spaces = await NAssembla.SpaceProxy.GetListAsync();
-	      return View(spaces);
+	      if (TempData["spacecache"] != null)
+	      {
+		var spaces = (nAssembla.Cache.SpaceDataCache)(TempData["spacecache"]);
+		return View(spaces);
+	      }
+	      else
+	      {
+		var spaces = await NAssembla.SpaceProxy.GetListAsync();
+		return View(spaces);
+	      }
 	  }
 	  catch (Exception ex)
 	  {   
@@ -130,6 +138,32 @@ namespace nAssembla.Web.Controllers
         /// <returns></returns>
         public async Task<ActionResult> Show(Space _space)
         {  
+	  return View();
+        }
+
+        public async Task<ActionResult> Refresh()
+        {
+	  //var thisSpace = (DTO.Space)spacesCombo.SelectedItem;
+	  //var serialized = Settings.Default.SerializedCache;
+	  //var dataCache = new nAssembla.Cache.DataCache();
+	  //if (!string.IsNullOrEmpty(serialized))
+	  //    dataCache = Newtonsoft.Json.JsonConvert.DeserializeObject<nAssembla.Cache.DataCache>(serialized);
+
+	  //var spacecache = default(nAssembla.Cache.SpaceDataCache);	  
+	  //spacecache = await NAssembla.GetSpaceDataCache(thisSpace.Id);
+
+	  //if (!dataCache.Spaces.ContainsKey(thisSpace.Id))
+	  //    dataCache.Spaces.Add(thisSpace.Id, spacecache);
+	  //else
+	  //    dataCache.Spaces[thisSpace.Id] = spacecache;
+
+	  //serialized = await Newtonsoft.Json.JsonConvert.SerializeObjectAsync(dataCache);
+
+	  //Settings.Default.SerializedCache = serialized;
+	  //Settings.Default.Save();
+
+	  //statusLabel.Text = "Ready";
+
 	  return View();
         }
 
